@@ -28,6 +28,16 @@
   color: #61dafb;
 }
 
+.table_wrapper {
+  max-width: 75%;
+  margin: 10px 10rem;
+}
+
+.custom-table-footer {
+  padding: 10px 40px;
+  background-color: gray;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
