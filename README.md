@@ -20,4 +20,5 @@
 
 ## Current deployment
 
--
+- condescending-aryabhata-1df8eb.netlify.app
+- Currently there are some issues with netlify `build` command, so the site might not be up
