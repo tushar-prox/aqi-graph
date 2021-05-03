@@ -38,6 +38,10 @@
   background-color: gray;
 }
 
+.chart-wrapper {
+  margin: 60px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
