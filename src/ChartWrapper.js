@@ -46,17 +46,6 @@ const ChartWrapper = ({ individualCity, aqiData }) => {
   const chartContainer = useRef(null);
   const [chartInstance, setChartInstance] = useState(null);
 
-  const updateDataset = (datasetIndex, newData) => {
-    if (!chartInstance || !chartInstance.data) return;
-    chartInstance.data.labels = [
-      ...chartInstance.data.labels,
-      chartInstance.data.labels.length + 1,
-    ];
-    chartInstance.data.datasets[datasetIndex].label = `AQI indices of ${individualCity}`;
-    chartInstance.data.datasets[datasetIndex].data = newData;
-    chartInstance.update();
-  };
-
   useEffect(() => {
     if (chartContainer && chartContainer.current) {
       const newChartInstance = new Chartjs(chartContainer.current, {
@@ -68,9 +57,20 @@ const ChartWrapper = ({ individualCity, aqiData }) => {
   }, [chartContainer, aqiData]);
 
   useEffect(() => {
+    const updateDataset = (datasetIndex, newData) => {
+      if (!chartInstance || !chartInstance.data) return;
+      chartInstance.data.labels = [
+        ...chartInstance.data.labels,
+        chartInstance.data.labels.length + 1,
+      ];
+      chartInstance.data.datasets[datasetIndex].label = `AQI indices of ${individualCity}`;
+      chartInstance.data.datasets[datasetIndex].data = newData;
+      chartInstance.update();
+    };
+
     if (!aqiData) return;
     updateDataset(0, aqiData);
-  }, [aqiData, aqiData, updateDataset]);
+  }, [aqiData, chartInstance, individualCity]);
 
   return (
     <div className='chart-wrapper'>
