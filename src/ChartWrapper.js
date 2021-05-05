@@ -65,12 +65,12 @@ const ChartWrapper = ({ individualCity, aqiData }) => {
       });
       setChartInstance(newChartInstance);
     }
-  }, [chartContainer]);
+  }, [chartContainer, aqiData]);
 
   useEffect(() => {
     if (!aqiData) return;
     updateDataset(0, aqiData);
-  }, [aqiData]);
+  }, [aqiData, aqiData, updateDataset]);
 
   return (
     <div className='chart-wrapper'>

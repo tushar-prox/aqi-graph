@@ -30,12 +30,12 @@ function App() {
     return delta.concat(remaining);
   };
 
-  const handleMessage = (e) => {
-    const apples = JSON.parse(e.data);
-    setFD((prev) => updatedList(prev, apples));
-  };
-
   useEffect(() => {
+    const handleMessage = (e) => {
+      const apples = JSON.parse(e.data);
+      setFD((prev) => updatedList(prev, apples));
+    };
+    
     ws.current = new WebSocket(`ws://city-ws.herokuapp.com/`);
     ws.current.onopen = () => console.log('ws opened');
     ws.current.onmessage = handleMessage;
